@@ -1,0 +1,46 @@
+241125(월)
+1. AirFlow
+가. 파이프라인 구축 및 관리
+나. DAG(Directed Acycle Graph) = 하나의 워크플로우(RESTAPI 데이터 전처리 > 이전 데이터 삭제 > 적재)
+다. 도커, Git, 리눅스쉘스크립트
+라. 자유도가 높은 게임, 쿠버네티스 활용한 수평적 확장, 실시간성 X(최소 분단위 실행)
+
+2. 설치
+가. wsl ubuntu 18.04 and D 설치 : https://freernd.tistory.com/entry/WSL-%EC%84%A4%EC%B9%98-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD-%EB%B0%A9%EB%B2%95
+나. https://docs.docker.com/engine/install/ubuntu/
+  1) sudo service docker start > docker-compose.yml 이 있는 폴더로 이동 > sudo docker compose up / down > sudo docker ps
+다. airflow 설치 : https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
+  1) curl -k -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.3/docker-compose.yaml' // -k
+  2) 6개 컨테이너(경량화된 서버, 앱) : webserver, scheduler, triggerer, worker, redis, postgres
+  3) http://localhost:8080/login/?next=http%3A%2F%2Flocalhost%3A8080%2Fhome // airflow/airflow
+  
+라. /home/blackbutterfly0852/dags 내에 dag을 넣으면 6개의 container가 인식 : dags와 6개의 container가 마운트
+
+
+3. 셋팅
+가. 컨테이너 접속 및 파이썬 버전 확인 : sudo docker exec -it blackbutterfly0852-airflow-worker-1 bash 
+  1) Dag 개발을 로컬해서 하는데 로컬 파이썬 버전과 Airflow 컨테이너 파이썬 버전과 동일해야 함
+  1) python -V
+
+나. VScode 셋팅
+  1) 파이썬 가상환경 : 글로벌 python 환경 내 라이브러리에 종속성 문제를 해결하기 위함
+  2) python -m venv ./venv 후 select interpreter
+  
+다. Git 셋팅
+  1) git init : 로컬환경에 repository 생성
+  2) git status
+  3) .gitignore : .venv 와 같이 untracked 해도 되는(추적되지 않아도 되는, git에 안올려도 되는) 파일들 관리
+  4) git add .gitignore : 해당 파일을 track
+  5) git config --global user.email "blackbutterfly0852@gmail.com", git config --global user.name "blackbutterfly0852"
+  6) git commit -m "최초 .gitignore" (m은 comment)
+  7) git status, git log
+  8) git branch -M main : main이라는 branch로 변경해라, 기본은 master라는 branch, 보통 개발용/운영용 branch
+  9) git remote add origin https://github.com/blackbutterfly0852/airflow.git
+    * 로컬 repo와 원격 repo 연결
+    * origin 이라는 원격 repo를 만들고, 주소는 해당 url이다.
+    * git remote
+  10) git push -u origin master
+  
+라. airflow library 설치
+  1) wsl에서 pip install로 airflow 설치 X  이유 : 저사양 아키텍쳐 설치 > 제약 > sqlite 및 한번에 하나의 task만 실행 가능한 제약들로 인함, 보통 도커로 설치
+  2) venv 내 : pip install "apache-airflow[celery]==2.10.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.8.txt"

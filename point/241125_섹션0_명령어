@@ -1,0 +1,35 @@
+1. 리눅스 명령어
+가. process status : ps ex) docker ps
+나. switch user : su ex) su blackbutterfly0852, su root
+
+
+2. 도커 명령어 (blackbutterfly0852 / god1133!!)
+가. sudo service docker start
+나. docker-compose.yml 이 있는 폴더로 이동
+다. sudo docker compose up / down
+라. sudo docker ps
+마. sudo docker exec -it 195e5887e2a3 bash : 각 컨테이너로 접속
+
+3. Git 명령어(분산, 로컬L저장소와 원격R저장소가 분리)
+가. git init : 로컬환경에 repository 생성
+나. git status
+다. .gitignore : .venv 와 같이 untracked 해도 되는(추적되지 않아도 되는, git에 안올려도 되는) 파일들 관리
+라. git add .gitignore : 해당 파일을 track
+마. git config --global user.email "blackbutterfly0852@gmail.com", git config --global user.name "blackbutterfly0852"
+바. git commit -m "최초 .gitignore" (m은 comment)
+사. git status, git log
+아. git branch -M main : main이라는 branch로 변경해라, 기본은 master라는 branch, 보통 개발용/운영용 branch
+자. git remote add origin https://github.com/blackbutterfly0852/airflow.git
+  . 1) 로컬 repo와 원격 repo 연결
+  . 2) origin 이라는 원격 repo를 만들고, 주소는 해당 url이다.
+  . 3) git remote
+차. git push -u origin main
+타. git reset : add . rollback
+
+4. 파이썬 from vs import
+가. from 모듈 or 패키지 > 어디서 가져올지
+나. import 함수, 클래스, 변수 > 무엇을 가져올지
+다. 모듈 : 파이썬 코드가 작성된 단일 파일, .py 확장자를 가진 파일
+라. 패키지 : 패키지는 모듈들을 포함한 디렉토리
+마. 라이브러리 : 여러 모듈과 패키지들의 집합
+바. 라이브러리 vs 프레임워크 : 제어의 주권? 라이브러리(개발자), 프레임워크(프레임워크, 앱의 큰 뼈대 및 구조, 규칙)
