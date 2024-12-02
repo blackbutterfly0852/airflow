@@ -1,6 +1,6 @@
 from airflow import DAG
 import pendulum
-from airflow.decorators import TaskDecorator
+from airflow.decorators import task
 
 with DAG(
     dag_id="dags_python_task_decorator", # 일반적으로 DagId와 파일명과 일치시키는것이 좋음
