@@ -24,7 +24,7 @@
 
 나. VScode 셋팅
   1) 파이썬 가상환경 : 글로벌 python 환경 내 라이브러리에 종속성 문제를 해결하기 위함
-  2) python -m venv ./venv 후 select interpreter
+  2) help > show all commands > interpreter > python -m venv ./venv 후 select interpreter
   
 다. Git 셋팅
   1) git init : 로컬환경에 repository 생성

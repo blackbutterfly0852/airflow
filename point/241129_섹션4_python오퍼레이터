@@ -1,2 +1,27 @@
 04-1. Python 오퍼레이터 기본
 1. PythonOperator, BranchPythonOperator
+
+04-2. 외부 파이썬함수 실행하기
+가. 외부함수는 plugins 폴더 활용 : 기본 path에 등록되어있음
+1) 공통함수 가능 > 재활용성 증가 > Dag is Simple!
+
+04-3. Task Decorator
+가. Decorator
+1) @outer_func > Decorator 기능을 하는 outer_func 실행
+2) 함수 자체를 수정하지 않고 wrapping하는 함수를 만들어 함수 자체의 변경을 최소화
+3) 기존의 여러 곳에서 호출하는 부분은 수정을 안하면서 동시에 해당 함수의 추가 기능 가능
+
+나. Task Decorator
+1) Task Decorator를 사용하면 PythonOperator을 사용하지 않아도 Task를 쉽게 생성 가능
+2) Decorator를 어떻게 만드느냐에 따라 함수의 기능은 매우 다양
+3) 코드가 상대적으로 생성 기준으로는 약 2줄정도가 줄어드는데, 스케줄이나 catchup 변수를 넣을려면 그만큼 추가 되겠지?(코드가 줄어들기 보다는 깔끔해지는 정도로 생각)
+4) Task 간 데이터 공유시에도 Task Decorator 유용
+
+04-4~6. 파이썬 함수 파라미터 이해
+가. def regist(name, sex, *arg, **kwargs):
+      # *arg : 튜플
+      # **kwargs : 딕셔너리
+      email = arg[0] if len(arg) >= 1 else None
+      address = arg[1] if len(arg) >=2 else None
+      country = kwargs.get('country') or '' # kwargs['country']의 오류 방지를 위해 get 사용, 안전로직
+    regist('kim', 'man', 'kr', 'seoul', 'email'='kdw91@naver.com', 'phone'='010)

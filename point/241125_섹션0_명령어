@@ -33,3 +33,7 @@
 라. 패키지 : 패키지는 모듈들을 포함한 디렉토리
 마. 라이브러리 : 여러 모듈과 패키지들의 집합
 바. 라이브러리 vs 프레임워크 : 제어의 주권? 라이브러리(개발자), 프레임워크(프레임워크, 앱의 큰 뼈대 및 구조, 규칙)
+
+5. airflow
+가. help > show all commands > interpreter > python -m venv ./venv 후 select interpreter
+나. airflow info
