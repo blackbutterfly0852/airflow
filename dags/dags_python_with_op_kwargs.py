@@ -6,7 +6,7 @@ from common.common_func import regist2
 
 
 with DAG(
-    dag_id="ddags_python_with_op_kwargs", # 일반적으로 DagId와 파일명과 일치시키는것이 좋음
+    dag_id="dags_python_with_op_kwargs", # 일반적으로 DagId와 파일명과 일치시키는것이 좋음
     schedule="30 6 * * *",
     start_date=pendulum.datetime(2024, 12, 3, tz="Asia/Seoul"),
     catchup=False # 일반적으로 false, 누락된 구간을 동시에 수행(순차적이 아님)
