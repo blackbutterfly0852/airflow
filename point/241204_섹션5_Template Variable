@@ -1,0 +1,18 @@
+[05-1.Jinja템플릿]
+1. 
+가. 문서(파일)에서 특정 양식으로 작성된 값을 런타임시 실제 값으로 치환해주는 처리 엔진
+나. 오퍼레이터 파라미터 입력시 중괄호 {} 2개를 이용하면 Airflow에서 기본적으로 제공하는 변수들을 치환된 갓으로 입력할 수 있음
+
+2. https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html
+가. {{ data_interval_start }}
+나. {{ data_interval_end }}
+다. {{ logical_date }}
+
+3. https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/index.html
+가. Jinja템플릿은 모든 오퍼레이터, 모든 파라미터에 사용할 수 있는 것이 아님
+나. bash_command (str | airflow.utils.types.ArgNotSet) ? The command, set of commands or reference to a Bash script (must be ‘.sh’ or ‘.bash’) to be executed. (templated)
+다. template_fields: Sequence[str]= ('bash_command', 'env', 'cwd')[source]
+
+{{ logical_date }}
+[05-2.Bash오퍼레이터with Template]
+
