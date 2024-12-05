@@ -38,4 +38,4 @@ with DAG(
         print('task_instance : ' + str(kwargs['task_instance']))
         print('### python_function2_end')
 
-    python_t1 >> python_funcion2
+    python_t1 >> python_funcion2()
