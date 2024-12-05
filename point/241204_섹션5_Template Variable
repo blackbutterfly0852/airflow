@@ -15,14 +15,19 @@
 
 
 [05-2.Bash오퍼레이터with Template]
-[05-3.Airflow의 날짜개념]
+[05-3.Airflow의 날짜개념] >> 다시 공부
 1. Airflow ETL 시간 사상 :  데이터 관점
 가. 배치수행일자 : {{ data_interval_end }}
 나. 이전배치수행일자 : {{ data_interval_start, ds, ts, logical_date }}
-
+  1) 데이터 관점에서의 시작일자 이자 이전 배치 수행일자
 [05-4. 파이썬 오퍼레이터 with Template]
 1. pythonOperator 생성해서 op_kwargs에 Jinja 템플릿 직접 대입
 2. (추천) task 데코레이터 **op_kwargs에 이미 존재하는 Jinja 템플릿 활용
 
 [05-5. Bash오퍼레이터With macro]
+1. macro
+가. 템플릿 엔진에서 날짜를 사용하는데, 날짜계산이 필요한 경우
+나. macro.datetime, macro.dateutil 익숙 (파이썬과 동일)
+다. venv ) pip install jupyter, pip -m notebook
+
 [05-6.Python오퍼레이터With macro]
