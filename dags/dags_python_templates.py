@@ -14,10 +14,8 @@ with DAG(
 )  as dag:
     def python_funcion1(start_date, end_date, **kwargs):
         print('### python_function1_start')
-
         print('start_date : ' + start_date)
         print('end_date : ' + end_date)
-        
         print('### python_function1_end')
 
     python_t1 = PythonOperator(
