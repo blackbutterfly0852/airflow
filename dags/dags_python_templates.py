@@ -30,12 +30,14 @@ with DAG(
     @task(task_id = 'python_t2')
     def python_funcion2(**kwargs):
         print('### python_function2_start')
+
         print(kwargs)
         print('ds : ' + kwargs['ds'])
         print('ts : ' + kwargs['ts'])
         print('data_interval_start : ' + str(kwargs['data_interval_start']))
         print('data_interval_end : ' + str(kwargs['data_interval_end']))
         print('task_instance : ' + str(kwargs['task_instance']))
+        
         print('### python_function2_end')
 
     python_t1 >> python_funcion2()
