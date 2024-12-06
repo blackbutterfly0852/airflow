@@ -10,9 +10,11 @@ with DAG(
   
 )  as dag:
     # 스케줄러가 주기적으로 문법적 오류를 검사하는 위치 
+    # start_date : 전달 1일, end_date :  전달 말일
     @task(task_id = 'task_using_macros',
           templates_dict= { 'start_date' : '{{ ( data_interval_end.in_timezone("Asia/Seoul") + macros.dateutil.relativedelta.relativedelta(months=-1, day=1) ) | ds }}',
                         'end_date' :  '{{ ( data_interval_end.in_timezone("Asia/Seoul").replace(day=1) + macros.dateutil.relativedelta.relativedelta(days=-1) ) | ds }}' } )
+    # templates_dict >> **kwargs 
     def get_datetime_macro(**kwargs):
         templates_dict = kwargs.get('templates_dict') or {}
         if templates_dict:
