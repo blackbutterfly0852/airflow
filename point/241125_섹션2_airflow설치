@@ -1,46 +1,46 @@
-241125(¿ù)
+241125(ì›”)
 1. AirFlow
-°¡. ÆÄÀÌÇÁ¶óÀÎ ±¸Ãà ¹× °ü¸®
-³ª. DAG(Directed Acycle Graph) = ÇÏ³ªÀÇ ¿öÅ©ÇÃ·Î¿ì(RESTAPI µ¥ÀÌÅÍ ÀüÃ³¸® > ÀÌÀü µ¥ÀÌÅÍ »èÁ¦ > ÀûÀç)
-´Ù. µµÄ¿, Git, ¸®´ª½º½©½ºÅ©¸³Æ®
-¶ó. ÀÚÀ¯µµ°¡ ³ôÀº °ÔÀÓ, Äí¹ö³×Æ¼½º È°¿ëÇÑ ¼öÆòÀû È®Àå, ½Ç½Ã°£¼º X(ÃÖ¼Ò ºĞ´ÜÀ§ ½ÇÇà)
+ê°€. íŒŒì´í”„ë¼ì¸ êµ¬ì¶• ë° ê´€ë¦¬
+ë‚˜. DAG(Directed Acycle Graph) = í•˜ë‚˜ì˜ ì›Œí¬í”Œë¡œìš°(RESTAPI ë°ì´í„° ì „ì²˜ë¦¬ > ì´ì „ ë°ì´í„° ì‚­ì œ > ì ì¬)
+ë‹¤. ë„ì»¤, Git, ë¦¬ëˆ…ìŠ¤ì‰˜ìŠ¤í¬ë¦½íŠ¸
+ë¼. ììœ ë„ê°€ ë†’ì€ ê²Œì„, ì¿ ë²„ë„¤í‹°ìŠ¤ í™œìš©í•œ ìˆ˜í‰ì  í™•ì¥, ì‹¤ì‹œê°„ì„± X(ìµœì†Œ ë¶„ë‹¨ìœ„ ì‹¤í–‰)
 
-2. ¼³Ä¡
-°¡. wsl ubuntu 18.04 and D ¼³Ä¡ : https://freernd.tistory.com/entry/WSL-%EC%84%A4%EC%B9%98-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD-%EB%B0%A9%EB%B2%95
-³ª. https://docs.docker.com/engine/install/ubuntu/
-  1) sudo service docker start > docker-compose.yml ÀÌ ÀÖ´Â Æú´õ·Î ÀÌµ¿ > sudo docker compose up / down > sudo docker ps
-´Ù. airflow ¼³Ä¡ : https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
+2. ì„¤ì¹˜
+ê°€. wsl ubuntu 18.04 and D ì„¤ì¹˜ : https://freernd.tistory.com/entry/WSL-%EC%84%A4%EC%B9%98-%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD-%EB%B0%A9%EB%B2%95
+ë‚˜. https://docs.docker.com/engine/install/ubuntu/
+  1) sudo service docker start > docker-compose.yml ì´ ìˆëŠ” í´ë”ë¡œ ì´ë™ > sudo docker compose up / down > sudo docker ps
+ë‹¤. airflow ì„¤ì¹˜ : https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
   1) curl -k -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.3/docker-compose.yaml' // -k
-  2) 6°³ ÄÁÅ×ÀÌ³Ê(°æ·®È­µÈ ¼­¹ö, ¾Û) : webserver, scheduler, triggerer, worker, redis, postgres
+  2) 6ê°œ ì»¨í…Œì´ë„ˆ(ê²½ëŸ‰í™”ëœ ì„œë²„, ì•±) : webserver, scheduler, triggerer, worker, redis, postgres
   3) http://localhost:8080/login/?next=http%3A%2F%2Flocalhost%3A8080%2Fhome // airflow/airflow
   
-¶ó. /home/blackbutterfly0852/dags ³»¿¡ dagÀ» ³ÖÀ¸¸é 6°³ÀÇ container°¡ ÀÎ½Ä : dags¿Í 6°³ÀÇ container°¡ ¸¶¿îÆ®
+ë¼. /home/blackbutterfly0852/dags ë‚´ì— dagì„ ë„£ìœ¼ë©´ 6ê°œì˜ containerê°€ ì¸ì‹ : dagsì™€ 6ê°œì˜ containerê°€ ë§ˆìš´íŠ¸
 
 
-3. ¼ÂÆÃ
-°¡. ÄÁÅ×ÀÌ³Ê Á¢¼Ó ¹× ÆÄÀÌ½ã ¹öÀü È®ÀÎ : sudo docker exec -it blackbutterfly0852-airflow-worker-1 bash 
-  1) Dag °³¹ßÀ» ·ÎÄÃÇØ¼­ ÇÏ´Âµ¥ ·ÎÄÃ ÆÄÀÌ½ã ¹öÀü°ú Airflow ÄÁÅ×ÀÌ³Ê ÆÄÀÌ½ã ¹öÀü°ú µ¿ÀÏÇØ¾ß ÇÔ
+3. ì…‹íŒ…
+ê°€. ì»¨í…Œì´ë„ˆ ì ‘ì† ë° íŒŒì´ì¬ ë²„ì „ í™•ì¸ : sudo docker exec -it blackbutterfly0852-airflow-worker-1 bash 
+  1) Dag ê°œë°œì„ ë¡œì»¬í•´ì„œ í•˜ëŠ”ë° ë¡œì»¬ íŒŒì´ì¬ ë²„ì „ê³¼ Airflow ì»¨í…Œì´ë„ˆ íŒŒì´ì¬ ë²„ì „ê³¼ ë™ì¼í•´ì•¼ í•¨
   1) python -V
 
-³ª. VScode ¼ÂÆÃ
-  1) ÆÄÀÌ½ã °¡»óÈ¯°æ : ±Û·Î¹ú python È¯°æ ³» ¶óÀÌºê·¯¸®¿¡ Á¾¼Ó¼º ¹®Á¦¸¦ ÇØ°áÇÏ±â À§ÇÔ
-  2) help > show all commands > interpreter > python -m venv ./venv ÈÄ select interpreter
+ë‚˜. VScode ì…‹íŒ…
+  1) íŒŒì´ì¬ ê°€ìƒí™˜ê²½ : ê¸€ë¡œë²Œ python í™˜ê²½ ë‚´ ë¼ì´ë¸ŒëŸ¬ë¦¬ì— ì¢…ì†ì„± ë¬¸ì œë¥¼ í•´ê²°í•˜ê¸° ìœ„í•¨
+  2) help > show all commands > interpreter > python -m venv ./venv í›„ select interpreter
   
-´Ù. Git ¼ÂÆÃ
-  1) git init : ·ÎÄÃÈ¯°æ¿¡ repository »ı¼º
+ë‹¤. Git ì…‹íŒ…
+  1) git init : ë¡œì»¬í™˜ê²½ì— repository ìƒì„±
   2) git status
-  3) .gitignore : .venv ¿Í °°ÀÌ untracked ÇØµµ µÇ´Â(ÃßÀûµÇÁö ¾Ê¾Æµµ µÇ´Â, git¿¡ ¾È¿Ã·Áµµ µÇ´Â) ÆÄÀÏµé °ü¸®
-  4) git add .gitignore : ÇØ´ç ÆÄÀÏÀ» track
+  3) .gitignore : .venv ì™€ ê°™ì´ untracked í•´ë„ ë˜ëŠ”(ì¶”ì ë˜ì§€ ì•Šì•„ë„ ë˜ëŠ”, gitì— ì•ˆì˜¬ë ¤ë„ ë˜ëŠ”) íŒŒì¼ë“¤ ê´€ë¦¬
+  4) git add .gitignore : í•´ë‹¹ íŒŒì¼ì„ track
   5) git config --global user.email "blackbutterfly0852@gmail.com", git config --global user.name "blackbutterfly0852"
-  6) git commit -m "ÃÖÃÊ .gitignore" (mÀº comment)
+  6) git commit -m "ìµœì´ˆ .gitignore" (mì€ comment)
   7) git status, git log
-  8) git branch -M main : mainÀÌ¶ó´Â branch·Î º¯°æÇØ¶ó, ±âº»Àº master¶ó´Â branch, º¸Åë °³¹ß¿ë/¿î¿µ¿ë branch
+  8) git branch -M main : mainì´ë¼ëŠ” branchë¡œ ë³€ê²½í•´ë¼, ê¸°ë³¸ì€ masterë¼ëŠ” branch, ë³´í†µ ê°œë°œìš©/ìš´ì˜ìš© branch
   9) git remote add origin https://github.com/blackbutterfly0852/airflow.git
-    * ·ÎÄÃ repo¿Í ¿ø°İ repo ¿¬°á
-    * origin ÀÌ¶ó´Â ¿ø°İ repo¸¦ ¸¸µé°í, ÁÖ¼Ò´Â ÇØ´ç urlÀÌ´Ù.
+    * ë¡œì»¬ repoì™€ ì›ê²© repo ì—°ê²°
+    * origin ì´ë¼ëŠ” ì›ê²© repoë¥¼ ë§Œë“¤ê³ , ì£¼ì†ŒëŠ” í•´ë‹¹ urlì´ë‹¤.
     * git remote
   10) git push -u origin master
   
-¶ó. airflow library ¼³Ä¡
-  1) wsl¿¡¼­ pip install·Î airflow ¼³Ä¡ X  ÀÌÀ¯ : Àú»ç¾ç ¾ÆÅ°ÅØÃÄ ¼³Ä¡ > Á¦¾à > sqlite ¹× ÇÑ¹ø¿¡ ÇÏ³ªÀÇ task¸¸ ½ÇÇà °¡´ÉÇÑ Á¦¾àµé·Î ÀÎÇÔ, º¸Åë µµÄ¿·Î ¼³Ä¡
-  2) venv ³» : pip install "apache-airflow[celery]==2.10.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.8.txt"
+ë¼. airflow library ì„¤ì¹˜
+  1) wslì—ì„œ pip installë¡œ airflow ì„¤ì¹˜ X  ì´ìœ  : ì €ì‚¬ì–‘ ì•„í‚¤í…ì³ ì„¤ì¹˜ > ì œì•½ > sqlite ë° í•œë²ˆì— í•˜ë‚˜ì˜ taskë§Œ ì‹¤í–‰ ê°€ëŠ¥í•œ ì œì•½ë“¤ë¡œ ì¸í•¨, ë³´í†µ ë„ì»¤ë¡œ ì„¤ì¹˜
+  2) venv ë‚´ : pip install "apache-airflow[celery]==2.10.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.3/constraints-3.8.txt"
