@@ -1,0 +1,7 @@
+[241209(월) 06-1.Python오퍼레이터 Xcom다루기]
+0. dags_python_with_xcom_eg1.py, dags_python_with_xcom_eg2.py
+1. pull : key, task_id 모두 명시하는 것이 안전, 동일한 key값을 사용하고 있는 테스크가 여러 개일 때 task_id 없이 key값만 명시한다면 마지막에 작성된 key의 value값만 가져옴
+2. task decorator 사용시  
+가. 함수 입력/출력 관계만으로 Task flow가 정의됨
+나. 리턴값은 자동으로 Xcom에 key='return_value', task_ids=task_id 함수인자에 리턴값이 있는 함수를 넣으면 자동으로 Xcom에서 찾아서 대입
+
