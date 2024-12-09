@@ -6,3 +6,7 @@
 나. 리턴값은 자동으로 Xcom에 key='return_value', task_ids=task_id 함수인자에 리턴값이 있는 함수를 넣으면 자동으로 Xcom에서 찾아서 대입
     1) key 값에 자동으로 'return_value'가 입력됨
 
+[241209(월) 06-2.Bash오퍼레이터에서 Xcom다루기]
+0. dags_bash_with_xcom.py
+1. 다수의 echo 중 마지막 echo문이 return_value로 대입
+2. do_xcom_push=False, 출력문을 자동으로 xcom에 올리는 것 금지 

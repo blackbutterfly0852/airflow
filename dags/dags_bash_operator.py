@@ -8,7 +8,7 @@ with DAG(
     dag_id="dags_bash_operator", # 일반적으로 DagId와 파일명과 일치시키는것이 좋음
     schedule="0 0 * * *",
     start_date=pendulum.datetime(2024, 11, 27, tz="Asia/Seoul"),
-    catchup=False, # 일반적으로 false, 누락된 구간을 동시에 수행(순차적이 아님)
+    catchup=False # 일반적으로 false, 누락된 구간을 동시에 수행(순차적이 아님)
     #dagrun_timeout=datetime.timedelta(minutes=60),
     #tags=["example", "example2"],
     #params={"example_key": "example_value"}, # task 내 공통적으로 전달한 파라미터
