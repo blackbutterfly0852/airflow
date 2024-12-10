@@ -19,11 +19,11 @@ with DAG(
         task_id = 'bash_pull',
         env = {
             'STATUS' : '{{ ti.xcom_pull(task_ids = "python_push")["status"] }}',
-            'DATA' : '{{ ti.xcom_pull(task_ids = "python_push")["status"] }}',
+            'DATA' : '{{ ti.xcom_pull(task_ids = "python_push")["data"] }}',
             'OPTIONS_CNT' : '{{ ti.xcom_pull(task_ids = "python_push")["options_cnt"] }}'
 
         },
-        bash_command = 'echo $STATUS && echo $DATA && echo $OPTIONS_CNT'
+        bash_command = 'echo $STATUS && echo $DATA && echo $OPTIONS_CNT' # 마지막 echo문 return_value 100
     )
 
     python_push_xcom() >> bash_pull

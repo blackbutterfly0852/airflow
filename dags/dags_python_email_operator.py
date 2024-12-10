@@ -15,9 +15,8 @@ with DAG(
     @task(task_id = 'someting_task')
     def some_logic(**kwargs):
         from random import choice
-        return choie(['Success','Fail'])
+        return choice(['Success','Fail'])
 
-    
     send_email = EmailOperator(
         task_id = 'send_email',
         to = 'kkdw91@naver.com',
