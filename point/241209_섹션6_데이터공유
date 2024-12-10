@@ -10,3 +10,23 @@
 0. dags_bash_with_xcom.py
 1. 다수의 echo 중 마지막 echo문이 return_value로 대입
 2. do_xcom_push=False, 출력문을 자동으로 xcom에 올리는 것 금지 
+
+
+[241210(화) 06-3.Python_Bash오퍼레이터with Xcom]
+0. dags_bash_python_with_xcom.py
+
+[241210(화) 06-4.Python_Email오퍼레이터with Xcom]
+0. dags_python_email_operator.py
+1. 어떻게 xcom 데이터를 가져오지? 해당 오퍼레이터의 파라미터 중 템플릿 문법 지원 확인
+
+[241210(화) 06-5.전역변수 Variable 이용하기]
+0. dags_bash_with_variable.py
+1. xcom : 특정 DAG, 특정 schedule에 수행되는 task간 데이터 공유 가능
+가. 같은 DAG이라도 어제 수행되었던 task와 오늘 수행되었던 task 간 데이터 공유는 불가능
+나. 모든 DAG이 공유할 수있는 변수 : 웹페이지 내에서 Variable 등록 > Variable key, value 값은 메타DB에 저장
+    1) sameple_key, sample_value
+다. 전역변수 사용하기
+    1) (미추천) Variable 라이브러리 + 파이썬 문법 활용 > 스케줄러의 DAG 파싱시 Variable.get 개수만큼 메타DB연결 및 부하 > 스케줄러 과부하
+    2) (권고) Jinja 템플릿 + 오퍼레이터 내부에서 가져오기
+라. 언제사용?
+    1) 협업환경에서 표준화된 DAG 생성 및 상수로 지정해서 사용할 변수 세팅  : 담당자 email 주소, bash_sh_dir = /opt/airflow/plugins/shell
