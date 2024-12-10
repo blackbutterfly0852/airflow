@@ -1,0 +1,9 @@
+[241211(수) 07-1.Task 분기처리(BranchPythonOperator)]
+0. dags_branch_python_operator.py
+1. python_branch_task 수행 이후 xcom 내 skipmixin_key 하면 후행에 어떤 task들이 수행되었는지 알 수 있음
+
+[241211(수) 07-2.Task 분기처리(task.branch)]
+0. dags_branch_python_operator.py
+1. @task.branch 객채 == BranchPythonOperator 객체
+
+[241211(수) 07-3.Task 분기처리(BaseBranchOperator)]
