@@ -19,7 +19,7 @@ with DAG(
         item_list = ['A',' B', 'C']
         selected_item = random.choice(item_list)
         
-        if selected_item == 'A'
+        if selected_item == 'A':
             return 'task_a' # 실제 task_id 작성
         elif selected_item in ['B', 'C']:
             return ['task_b', 'task_c']
@@ -28,7 +28,7 @@ with DAG(
         task_id = 'python_branch_task',
         python_callable = 'select_random'
     )
-    
+
     @task.branch(task_id = 'python_branch_task_2')
     def select_random_2():
         import random
