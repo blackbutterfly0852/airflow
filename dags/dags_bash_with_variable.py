@@ -18,9 +18,9 @@ with DAG(
         bash_command = f"echo variable_1 : {var_value}"
     )
 
-    bash_var_2 = BashOperator( # 추천
+    bash_var_2 = BashOperator( # 권고
         task_id = 'bash_var_2',
-        bash_command = f"echo variable_2 : {{var.value.sample_key}}" # var.value 부분은 공통
+        bash_command = "echo variable_2 : {{var.value.sample_key}}" # var.value 부분은 공통
     )
 
     bash_var_1 >> bash_var_2
