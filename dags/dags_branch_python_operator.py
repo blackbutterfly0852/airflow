@@ -63,4 +63,5 @@ with DAG(
         op_kwargs = {'selected' : 'C'}
     )
 
-    python_branch_task >> [task_a, task_b, task_c] >> select_random_2() >> [task_a, task_b, task_c]
+    python_branch_task >> [task_a, task_b, task_c] 
+    select_random_2() >> [task_a, task_b, task_c]
