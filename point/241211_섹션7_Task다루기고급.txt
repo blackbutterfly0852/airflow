@@ -7,3 +7,6 @@
 1. @task.branch 객채 == BranchPythonOperator 객체
 
 [241211(수) 07-3.Task 분기처리(BaseBranchOperator)]
+0.
+1. python 부모 클래스 1개만 상속 권고
+2. choose_branch
