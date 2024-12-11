@@ -26,7 +26,7 @@ with DAG(
 
     python_branch_opertaor = BranchPythonOperator (
         task_id = 'python_branch_task',
-        python_callable = 'select_random'
+        python_callable = select_random
     )
 
     @task.branch(task_id = 'python_branch_task_2')
