@@ -2,7 +2,7 @@ import datetime
 import pendulum
 from airflow.models.dag import DAG
 from airflow.operators.python import PythonOperator
-from airflow.operators.python import BaseBranchOperator
+from airflow.operators.branch import BaseBranchOperator
 from airflow.decorators import task
 
 with DAG(
@@ -14,7 +14,7 @@ with DAG(
 )  as dag:
     
     class CustomBranchOperator(BaseBranchOperator): # 다중 상속이 가능하나, 한 개의 클래스만 상속 받는 것을 권고
-        def choose_branch(self, context): # choose_branch 이름 및 context(**kwargs) 그대로 사용필요
+        def choose_branch(self, context): # choose_branch 이름 및 context( == **kwargs) 그대로 사용필요
             import random
             print(context)
             item_list = ['A',' B', 'C']
