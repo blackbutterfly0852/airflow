@@ -60,7 +60,7 @@ with DAG(
     task_c = PythonOperator (
         task_id = 'task_c',
         python_callable = 'common_func',
-        op_kwargs = {'selected' : 'c'}
+        op_kwargs = {'selected' : 'C'}
     )
 
     python_branch_task >> [task_a, task_b, task_c] >> select_random_2() >> [task_a, task_b, task_c]
