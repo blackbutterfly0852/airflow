@@ -18,7 +18,7 @@ with DAG(
         http_conn_id = 'openai.seoul.go.kr',
         endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/tbLnOpendataRtmsV/1/10/',
         method = 'GET',
-        header = {'Content_Type':'application-json',
+        header = {'Content-Type':'application/json',
                   'charset' : 'utf-8',
                   'Accpet' : '*/*'}
     )
