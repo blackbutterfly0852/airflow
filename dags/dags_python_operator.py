@@ -6,9 +6,9 @@ import random
 
 with DAG(
     dag_id="dags_python_operator", # 일반적으로 DagId와 파일명과 일치시키는것이 좋음
-    schedule="30 6 * * *",
+    schedule="30 9 * * *",
     start_date=pendulum.datetime(2024, 11, 29, tz="Asia/Seoul"),
-    catchup=False, # 일반적으로 false, 누락된 구간을 동시에 수행(순차적이 아님)
+    catchup=False # 일반적으로 false, 누락된 구간을 동시에 수행(순차적이 아님)
   
 )  as dag:
     def select_fruit():
