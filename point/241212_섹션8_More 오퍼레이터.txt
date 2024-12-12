@@ -8,3 +8,7 @@
 1. Dag 간 의존관계 
 가. Trigger Dag run : Dag 내 task를 통해 다른 Dag 실행 (선행 Dag이 하나일 경우)
 나. ExternalTask Sensor :  다른 Dag의 결과를 보고 나의 Dag을 수행 (선행 Dag이 여러 개일 경우)
+
+[241213(금) 08-3(2).SimpleHttp오퍼레이터 실습]
+1. SimpleHttpOperator : return값은 xcom에 저장
+2. 서울시 공공데이터의 경우 1000행 부터 오류 발생 가능성 있음
