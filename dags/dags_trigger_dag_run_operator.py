@@ -23,7 +23,7 @@ with DAG(
 
     trigger_dag_task = TriggerDagRunOperator(
         task_id = 'trigger_dag_task',
-        trigger_dag_id='dag_python_operator', # 필수값, 후행 Dag
+        trigger_dag_id='dags_python_operator', # 필수값, 후행 Dag
         trigger_run_id = None, # run_id : 수행방식과 시간을 유일하게 식별 > scheduled_시간({{ data_interval_start}}), manual_시간({{execution_date}}), backfill_시간
         execution_date ='{{ data_interval_end }}', # 값이 있으면트리거가 된 Dag은 manual 수행으로 간주 > manual_{{execution_date}}
         reset_dag_run = True, # True : 이미 수행 이력이 있지만 재수행
