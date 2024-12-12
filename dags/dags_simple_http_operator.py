@@ -30,6 +30,6 @@ with DAG(
         import json
         from pprint import pprint
 
-        pprint(json.load(rslt))
+        pprint(json.loads(rslt))
     
     tb_Ln_Opendata_rtmsV >> python_2()
