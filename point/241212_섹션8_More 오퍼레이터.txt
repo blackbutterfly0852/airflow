@@ -1,0 +1,9 @@
+[241212(목) 08-1.오퍼레이터 더보기]
+1. BaseOperator(중요)
+가. execute : 재정의(오버라이딩) 필요
+나. Airflow를 잘 사용하기 위해, BaseOperator을 상속/개발 하는 것에 익숙
+
+[241212(목) 08-2.TriggerDagRun 오퍼레이터의 사본]
+1. Dag 간 의존관계 
+가. Trigger Dag run : Dag 내 task를 통해 다른 Dag 실행 (선행 Dag이 하나일 경우)
+나. ExternalTask Sensor :  다른 Dag의 결과를 보고 나의 Dag을 수행 (선행 Dag이 여러 개일 경우)
