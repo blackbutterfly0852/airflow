@@ -15,7 +15,7 @@ with DAG(
     ''' 서울시 부동산 실거래가 정보 '''
     tb_Ln_Opendata_rtmsV = SimpleHttpOperator(
         task_id = 'tb_Ln_Opendata_rtmsV',
-        http_conn_id = 'openai.seoul.go.kr',
+        http_conn_id = 'openapi.seoul.go.kr',
         endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/tbLnOpendataRtmsV/1/10/',
         method = 'GET',
         header = {'Content-Type':'application/json',
