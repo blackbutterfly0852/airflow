@@ -10,7 +10,7 @@ class SeoulApiToCsvOperator(BaseOperator):
         self.http_conn_id = 'openapi.seoul.go.kr'
         self.path = path
         self.file_name = file_name
-        self.end_point = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
+        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm
         self.base_dt = base_dt
     
     # url:8080/apikey/type/dataset_nm/start/end
