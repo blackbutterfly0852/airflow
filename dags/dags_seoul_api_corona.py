@@ -12,7 +12,7 @@ with DAG(
 )  as dag:
     '''서울시 코로나19 확진자 발생동향'''
     tb_corona19_count_status = SeoulApiToCsvOperator(
-        tasK_id = 'tb_corona19_count_status',
+        task_id = 'tb_corona19_count_status',
         dataset_nm = 'TbCorona19CountStatus',
         path = '/opt/airflow/files/TbCorona19CountStatus/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash}}',
         file_name = 'TbCorona19CountStatus.csv'
@@ -20,7 +20,7 @@ with DAG(
 
     '''서울시 코로나19 백신 예방접종 발생동향'''
     tb_corona19_vaccine_stat_new = SeoulApiToCsvOperator(
-        tasK_id = 'tb_corona19_vaccine_stat_new',
+        task_id = 'tb_corona19_vaccine_stat_new',
         dataset_nm = 'TbCorona19VaccineStatNew',
         path = '/opt/airflow/files/TbCorona19VaccineStatNew/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash}}',
         file_name = 'TbCorona19VaccineStatNew.csv'

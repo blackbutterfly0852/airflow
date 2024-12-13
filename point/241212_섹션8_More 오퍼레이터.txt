@@ -26,4 +26,7 @@ def __init__ (self, name:str, **kwargs):
 hello_task = HelloOperator(
     task_id = '' #task_id 명시적으로 __init__ 파라미터에 없기 때문에 kwargs 내 Key:Value 값으로 Capture
 )
+5. 장점
+가. 원하는대로 로직 작성 가능
+나. 비효율성 제거, 재사용성 : 특정 기능을 하는 모듈을 만들어 놓고, 상세조건은 파라미터로 받게끔하여 모듈을 재사용할 수 있도록 유도
 
