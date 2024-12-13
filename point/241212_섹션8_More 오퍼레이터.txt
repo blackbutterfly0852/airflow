@@ -12,3 +12,18 @@
 [241213(금) 08-3(2).SimpleHttp오퍼레이터 실습]
 1. SimpleHttpOperator : return값은 xcom에 저장
 2. 서울시 공공데이터의 경우 1000행 부터 오류 발생 가능성 있음
+
+[241213(금) 08-4.CustomOperator]
+1. Airflow 꽃
+2. BaseOperator 필수 오버라이딩
+가. 생성자 : def __init__ , 파라미터 및 초기값 지정
+나. 비즈니스 로직 : def excute(self, context)
+3. Tempate 사용 가능한 파라미터 지정하기
+4. 
+def __init__ (self, name:str, **kwargs):
+    super() __init__(**kwargs) : 부모클래스(BaseOperator)의 생성자 호출
+
+hello_task = HelloOperator(
+    task_id = '' #task_id 명시적으로 __init__ 파라미터에 없기 때문에 kwargs 내 Key:Value 값으로 Capture
+)
+

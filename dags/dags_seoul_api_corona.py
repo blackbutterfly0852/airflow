@@ -1,0 +1,29 @@
+from operators.seoul_api_to_csv_operator import SeoulApiToCsvOperator
+from airflow import DAG
+import pendulum
+
+
+with DAG(
+    dag_id="dags_seoul_api_corona", # 일반적으로 DagId와 파일명과 일치시키는것이 좋음
+    schedule='0 7 * * *',
+    start_date=pendulum.datetime(2024, 12, 13, tz="Asia/Seoul"),
+    catchup=False, # 일반적으로 false, 누락된 구간을 동시에 수행(순차적이 아님)
+    
+)  as dag:
+    '''서울시 코로나19 확진자 발생동향'''
+    tb_corona19_count_status = SeoulApiToCsvOperator(
+        tasK_id = 'tb_corona19_count_status',
+        dataset_nm = 'TbCorona19CountStatus',
+        path = '/opt/airflow/files/TbCorona19CountStatus/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash}}',
+        file_name = 'TbCorona19CountStatus.csv'
+    )
+
+    '''서울시 코로나19 백신 예방접종 발생동향'''
+    tb_corona19_vaccine_stat_new = SeoulApiToCsvOperator(
+        tasK_id = 'tb_corona19_vaccine_stat_new',
+        dataset_nm = 'TbCorona19VaccineStatNew',
+        path = '/opt/airflow/files/TbCorona19VaccineStatNew/{{data_interval_end.in_timezone("Asia/Seoul") | ds_nodash}}',
+        file_name = 'TbCorona19VaccineStatNew.csv'
+    )
+
+    tb_corona19_count_status >> tb_corona19_vaccine_stat_new
