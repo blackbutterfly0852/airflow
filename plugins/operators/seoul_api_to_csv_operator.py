@@ -52,7 +52,7 @@ class SeoulApiToCsvOperator(BaseOperator):
         response = requests.get(request_url, headers) # String json 리턴
         contents = json.loads(response.text)
 
-        key_nm = list(contents.key())[0]
+        key_nm = list(contents.keys())[0]
         row_data = contents.get(key_nm).get('row')
         row_df = pd.DataFrame(row_data)
 
