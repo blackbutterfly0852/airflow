@@ -40,6 +40,24 @@
 다. sqlalchemy load? 
 
 [241214(토) 09-5.Custom Hook으로 bulk_load하기]
+0. plugins/hooks/custom_postgres_hook.py, dags_python_with_custom_hook_bulk_load.py
 1. @classmethod : 클래스를 객체로 인스턴스화 하지 않아도, 클래스의 메소드를 사용
 2. conn = get_conn(conn_id) : postgres DB와의 연결이 담긴 객체 > 이걸 구현필요
 가. conn = get_connection(conn_id) : airflow UI connections
+
+[241214(토) 09-6.Provider 더보기 _ Connection Type 추가]
+1. Provider는 외부서비스와 상호작용할 수 있도록 지원하는 플러그인 패키지
+가. from 모듈 or 패키지 > 어디서 가져올지
+나. import 함수, 클래스, 변수 > 무엇을 가져올지
+다. 모듈 : 파이썬 코드가 작성된 단일 파일, .py 확장자를 가진 파일
+라. 패키지 : 모듈들을 포함한 디렉토리
+마. 라이브러리 : 특정 기능을 제공하는 코드 집합
+바. 플러그인 : 기존 프로그램이나 애플리케이션에 추가적인 기능을 확장할 수 있는 외부 모듈 (웹 브라우저 플러그인: Chrome의 AdBlock 플러그인, PDF 뷰어.)
+
+2. Provider는 해당 서비스와 연결하고 작업을 수행하는 데 필요한 Operator, Hook, Sensor, Connection 설정 등을 제공
+가. Operator 제공: DAG에서 사용할 작업(Task)을 정의하는 Operator. (S3Operator, BigQueryOperator)
+나. Hook 제공: 외부 시스템과의 연결을 처리하는 Hook. (PostgresHook, GoogleCloudStorageHook)
+다. Connection 설정 관리: 외부 서비스와의 연결 정보를 Airflow에서 관리할 수 있게 함.
+라. Sensor 제공: 외부 서비스의 특정 이벤트나 상태를 감지.(S3KeySensor, HttpSensor)
+
+3. Connection Type에 없는 솔루션? package 설치 필요 + Dockerfile 재정의
