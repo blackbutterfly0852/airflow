@@ -33,4 +33,25 @@ with DAG(
         python_callable=insert_postgres,
         op_args=['172.28.0.3', '5432','dwkim','dwkim','dwkim']
     )
-    insert_postgres
+    # hook 사용
+    # 위 코드의 문제점 : 접속정보 노출문제, 접속정보 변경 문제 > Dag이 여러개라면?
+    def insert_postgres_with_hook(postgres_conn_id, **kwargs):
+        from airflow.providers.postgres.hooks.postgres import PostgresHook
+        from contextlib import closing
+        postgres_hook = PostgresHook(postgres_conn_id)
+        with closing(postgres_hook.get_conn()) as conn:
+            with closing(conn.cursor()) as cursor:
+                dag_id = kwargs.get('ti').dag_id
+                task_id = kwargs.get('ti').task_id
+                run_id = kwargs.get('ti').run_id
+                msg = 'insert 수행_hook'
+                sql = 'insert into py_opr_drct_insert values (%s,%s,%s,%s);'
+                cursor.execute(sql, (dag_id, task_id, run_id, msg))
+                conn.commit()
+
+    insert_postgres_with_hook = PythonOperator(
+        task_id = 'insert_postgres_with_hook',
+        python_callable=insert_postgres_with_hook,
+        op_kwargs={'postgres_conn_id' : 'conn-db-postgres-custom'}
+    )
+    insert_postgres >> insert_postgres_with_hook
