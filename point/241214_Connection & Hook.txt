@@ -19,5 +19,27 @@
 2. 해결책
 가. Variable 이용 (권장 X)
 나. Hook 이용
-    1) Connection : Airflow UI 화면에서 등록된 커넥션 정보
-    2) Hook :  Connection에 미리 API 연결 정보를 작성해놓고, 작성한 내용을 불러와서 사용
+    1) Hook는 외부 시스템과의 상호작용을 추상화한 인터페이스 (연결관리, 데이터추출 및 적재, 추상화제공 - 각 외부시스템과 복잡한 작업을 간단한 함수 호출로 추상화), Operator와 밀접한 연관
+    2) Connection : Airflow UI 화면에서 등록된 커넥션 정보
+    3) Hook :  Connection에 미리 API 연결 정보를 작성해놓고, 작성한 내용을 불러와서 사용
+
+[241214(토) 09-4.Postgres Hook으로 bulk_load하기]
+0. dags_python_with_postgres_hook_bulk_load.py
+1. bulk_load(적재)의 문제점
+가. load 가능한 Delimiter(구분자)는 Tab으로 고정
+나. header 포함 load
+다. 테이블이 없거나 특수문자 파싱 오류
+    1) CR(캐리지리턴, \r) : 커서를 줄의 맨 앞으로 이동, CR만 사용하면 덮어쓰기
+    2) LF(라인피드, \n) : 줄바꿈
+    3) windows : CR/LF, linux : LF
+    4) windows > linux : \r > ^M
+
+2. 해결책
+가. Custom hook을 만들어 Delimiter, header 여부 input값
+나. 테이블이 없으면 생성 및 특수문자 제거 로직
+다. sqlalchemy load? 
+
+[241214(토) 09-5.Custom Hook으로 bulk_load하기]
+1. @classmethod : 클래스를 객체로 인스턴스화 하지 않아도, 클래스의 메소드를 사용
+2. conn = get_conn(conn_id) : postgres DB와의 연결이 담긴 객체 > 이걸 구현필요
+가. conn = get_connection(conn_id) : airflow UI connections
