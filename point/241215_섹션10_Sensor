@@ -1,0 +1,12 @@
+[241215(일 10-1.센서의개념)]
+
+1. 일종의 특화된 Operator : Sensor < BaseSensorOperator < BaseOperator
+가. __init()__, poke(context) 필수 오버라이딩
+나. excute 함수 내 self.poke(context), excute 함수는 오버라이딩 필수 X
+2. poke
+가. soft_fail : True? time_out에 의해 실패로 되었을 때 스킵으로 표시
+나. poke_interval : 체킹주기
+다. time_out : 체킹하다가 언제 실패로 할 것인가?
+다. mode : poke, reschedule
+라. exponential_backoff : True? 2의 지수승만큼 체킹하는 주기가 늘어남
+마. max_wait : exponential_backoff True일 경우 너무 늘어나는 걸 방지 위해 제한
