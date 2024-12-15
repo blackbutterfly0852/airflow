@@ -8,5 +8,6 @@
 나. poke_interval : 체킹주기
 다. time_out : 체킹하다가 언제 실패로 할 것인가?
 다. mode : poke, reschedule
+    1)  
 라. exponential_backoff : True? 2의 지수승만큼 체킹하는 주기가 늘어남
 마. max_wait : exponential_backoff True일 경우 너무 늘어나는 걸 방지 위해 제한
