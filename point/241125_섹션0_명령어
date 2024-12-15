@@ -1,39 +1,40 @@
-1. ¸®´ª½º ¸í·É¾î
-°¡. process status : ps ex) docker ps
-³ª. switch user : su ex) su blackbutterfly0852, su root
+1. ë¦¬ëˆ…ìŠ¤ ëª…ë ¹ì–´
+ê°€. process status : ps ex) docker ps
+ë‚˜. switch user : su ex) su blackbutterfly0852, su root
 
 
-2. µµÄ¿ ¸í·É¾î (blackbutterfly0852 / god1133!!)
-°¡. sudo service docker start
-³ª. docker-compose.yml ÀÌ ÀÖ´Â Æú´õ·Î ÀÌµ¿
-´Ù. sudo docker compose up / down
-¶ó. sudo docker ps
-¸¶. sudo docker exec -it 195e5887e2a3 bash : °¢ ÄÁÅ×ÀÌ³Ê·Î Á¢¼Ó
+2. ë„ì»¤ ëª…ë ¹ì–´ (blackbutterfly0852 / god1133!!)
+ê°€. sudo service docker start
+ë‚˜. docker-compose.yml ì´ ìˆëŠ” í´ë”ë¡œ ì´ë™
+ë‹¤. sudo docker compose up / down
+ë¼. sudo docker ps
+ë§ˆ. sudo docker exec -it 195e5887e2a3 bash : ê° ì»¨í…Œì´ë„ˆë¡œ ì ‘ì†
 
-3. Git ¸í·É¾î(ºĞ»ê, ·ÎÄÃLÀúÀå¼Ò¿Í ¿ø°İRÀúÀå¼Ò°¡ ºĞ¸®)
-°¡. git init : ·ÎÄÃÈ¯°æ¿¡ repository »ı¼º
-³ª. git status
-´Ù. .gitignore : .venv ¿Í °°ÀÌ untracked ÇØµµ µÇ´Â(ÃßÀûµÇÁö ¾Ê¾Æµµ µÇ´Â, git¿¡ ¾È¿Ã·Áµµ µÇ´Â) ÆÄÀÏµé °ü¸®
-¶ó. git add .gitignore : ÇØ´ç ÆÄÀÏÀ» track
-¸¶. git config --global user.email "blackbutterfly0852@gmail.com", git config --global user.name "blackbutterfly0852"
-¹Ù. git commit -m "ÃÖÃÊ .gitignore" (mÀº comment)
-»ç. git status, git log
-¾Æ. git branch -M main : mainÀÌ¶ó´Â branch·Î º¯°æÇØ¶ó, ±âº»Àº master¶ó´Â branch, º¸Åë °³¹ß¿ë/¿î¿µ¿ë branch
-ÀÚ. git remote add origin https://github.com/blackbutterfly0852/airflow.git
-  . 1) ·ÎÄÃ repo¿Í ¿ø°İ repo ¿¬°á
-  . 2) origin ÀÌ¶ó´Â ¿ø°İ repo¸¦ ¸¸µé°í, ÁÖ¼Ò´Â ÇØ´ç urlÀÌ´Ù.
+3. Git ëª…ë ¹ì–´(ë¶„ì‚°, ë¡œì»¬Lì €ì¥ì†Œì™€ ì›ê²©Rì €ì¥ì†Œê°€ ë¶„ë¦¬)
+ê°€. git init : ë¡œì»¬í™˜ê²½ì— repository ìƒì„±
+ë‚˜. git status
+ë‹¤. .gitignore : .venv ì™€ ê°™ì´ untracked í•´ë„ ë˜ëŠ”(ì¶”ì ë˜ì§€ ì•Šì•„ë„ ë˜ëŠ”, gitì— ì•ˆì˜¬ë ¤ë„ ë˜ëŠ”) íŒŒì¼ë“¤ ê´€ë¦¬
+ë¼. git add .gitignore : í•´ë‹¹ íŒŒì¼ì„ track
+ë§ˆ. git config --global user.email "blackbutterfly0852@gmail.com", git config --global user.name "blackbutterfly0852"
+ë°”. git commit -m "ìµœì´ˆ .gitignore" (mì€ comment)
+ì‚¬. git status, git log
+ì•„. git branch -M main : mainì´ë¼ëŠ” branchë¡œ ë³€ê²½í•´ë¼, ê¸°ë³¸ì€ masterë¼ëŠ” branch, ë³´í†µ ê°œë°œìš©/ìš´ì˜ìš© branch
+ì. git remote add origin https://github.com/blackbutterfly0852/airflow.git
+  . 1) ë¡œì»¬ repoì™€ ì›ê²© repo ì—°ê²°
+  . 2) origin ì´ë¼ëŠ” ì›ê²© repoë¥¼ ë§Œë“¤ê³ , ì£¼ì†ŒëŠ” í•´ë‹¹ urlì´ë‹¤.
   . 3) git remote
-Â÷. git push -u origin main
-Å¸. git reset : add . rollback
+ì°¨. git push -u origin main
+íƒ€. git reset : add . rollback
 
-4. ÆÄÀÌ½ã from vs import
-°¡. from ¸ğµâ or ÆĞÅ°Áö > ¾îµğ¼­ °¡Á®¿ÃÁö
-³ª. import ÇÔ¼ö, Å¬·¡½º, º¯¼ö > ¹«¾ùÀ» °¡Á®¿ÃÁö
-´Ù. ¸ğµâ : ÆÄÀÌ½ã ÄÚµå°¡ ÀÛ¼ºµÈ ´ÜÀÏ ÆÄÀÏ, .py È®ÀåÀÚ¸¦ °¡Áø ÆÄÀÏ
-¶ó. ÆĞÅ°Áö : ÆĞÅ°Áö´Â ¸ğµâµéÀ» Æ÷ÇÔÇÑ µğ·ºÅä¸®
-¸¶. ¶óÀÌºê·¯¸® : ¿©·¯ ¸ğµâ°ú ÆĞÅ°ÁöµéÀÇ ÁıÇÕ
-¹Ù. ¶óÀÌºê·¯¸® vs ÇÁ·¹ÀÓ¿öÅ© : Á¦¾îÀÇ ÁÖ±Ç? ¶óÀÌºê·¯¸®(°³¹ßÀÚ), ÇÁ·¹ÀÓ¿öÅ©(ÇÁ·¹ÀÓ¿öÅ©, ¾ÛÀÇ Å« »À´ë ¹× ±¸Á¶, ±ÔÄ¢)
+4. íŒŒì´ì¬ from vs import
+ê°€. from ëª¨ë“ˆ or íŒ¨í‚¤ì§€ > ì–´ë””ì„œ ê°€ì ¸ì˜¬ì§€
+ë‚˜. import í•¨ìˆ˜, í´ë˜ìŠ¤, ë³€ìˆ˜ > ë¬´ì—‡ì„ ê°€ì ¸ì˜¬ì§€
+ë‹¤. ëª¨ë“ˆ : íŒŒì´ì¬ ì½”ë“œê°€ ì‘ì„±ëœ ë‹¨ì¼ íŒŒì¼, .py í™•ì¥ìë¥¼ ê°€ì§„ íŒŒì¼
+ë¼. íŒ¨í‚¤ì§€ : íŒ¨í‚¤ì§€ëŠ” ëª¨ë“ˆë“¤ì„ í¬í•¨í•œ ë””ë ‰í† ë¦¬
+ë§ˆ. ë¼ì´ë¸ŒëŸ¬ë¦¬ : ì—¬ëŸ¬ ëª¨ë“ˆê³¼ íŒ¨í‚¤ì§€ë“¤ì˜ ì§‘í•©
+ë°”. ë¼ì´ë¸ŒëŸ¬ë¦¬ vs í”„ë ˆì„ì›Œí¬ : ì œì–´ì˜ ì£¼ê¶Œ? ë¼ì´ë¸ŒëŸ¬ë¦¬(ê°œë°œì), í”„ë ˆì„ì›Œí¬(í”„ë ˆì„ì›Œí¬, ì•±ì˜ í° ë¼ˆëŒ€ ë° êµ¬ì¡°, ê·œì¹™)
 
 5. airflow
-°¡. help > show all commands > interpreter > python -m venv ./venv ÈÄ select interpreter
-³ª. airflow info
+ê°€. help > show all commands > interpreter > python -m venv ./venv í›„ select interpreter
+ë‚˜. airflow info
+ë‹¤. ê°„ê²©ê¸°ë°˜, ê°„ê²©ì˜ ì‹œì‘ì‹œì 
