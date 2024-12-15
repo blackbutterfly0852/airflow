@@ -14,3 +14,4 @@ RUN pip install \
 apache-airflow-providers-apache-hdfs \
 apache-airflow-providers-apache-hive
 RUN pip uninstall -y argparse
+ 
