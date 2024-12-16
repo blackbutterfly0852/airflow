@@ -23,4 +23,15 @@
 
 
 [241216(월) 10-2.Bash 센서]
+0. dag_bash_sensor.py
 1. bash_command 내 exit 0을 작성하면 true 리턴 (1~255 false, 'echo $?'로 확인가능)
+
+[241216(월) 10-3.File 센서]
+0. dag_file_sensor.py
+1. glob
+가. glob('/home/dwkim/docker-compose.yaml') # 일반적으로 file sensor를 사용시 파일명까지 명시
+나. glob('/home/dwkim/**', recursive = True) # dwkim 밑에 있는 모든 파일, 디렉토리들을 찾아서 List로 리턴, full_path 경로에 ** 필요
+
+2. connections 등록 필요
+가. connection_id = conn_file_opt_airflow_files
+나. extras = {"path" : "/opt/airflow/files"}
