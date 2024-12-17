@@ -2,11 +2,11 @@ from airflow.sensors.base import BaseSensorOperator
 from airflow.hooks.base import BaseHook
 
 class SeoulApiDataSensor(BaseSensorOperator):
-
+    template_fields = ('endpoint',)
     def __init__(self, dataset_nm, base_dt_col, day_off=0, **kwargs):
         super().__init__(**kwargs)
         self.http_conn_id = 'openapi.seoul.go.kr'
-        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + '/1/100'
+        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + '/1/5'
         self.base_dt_col = base_dt_col
         self.day_off = day_off
 
@@ -20,17 +20,15 @@ class SeoulApiDataSensor(BaseSensorOperator):
         url = f'{connection.host}:{connection.port}/{self.endpoint}'
         self.log.info(f'request url : {url}')
         response = requests.get(url)
-
         contents = json.loads(response.text)
-        key_nm = list(contents.key())[0]
+        key_nm = list(contents.keys())[0]
         row_data = contents.get(key_nm).get('row')
-
         last_dt = row_data[0].get(self.base_dt_col)
         # 2024-12-17 11:13:18.0
         last_date = last_dt[:10]
-        self.log.info('last_date : ', last_date)
+        
         last_date = last_date.replace('.', '-').replace('/', '-')
-        search_ymd = context.get('data_interval_end').in_timezone('Asia/Seoul') + relativedelta(days = self.day_off).strftime('%Y-%m-%d')
+        search_ymd = (context.get('data_interval_end').in_timezone('Asia/Seoul') + relativedelta(days = self.day_off)).strftime('%Y-%m-%d')
         
         try:
             import pendulum
