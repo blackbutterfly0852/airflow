@@ -6,7 +6,7 @@ class SeoulApiDataSensor(BaseSensorOperator):
     def __init__(self, dataset_nm, base_dt_col, day_off=0, **kwargs):
         super().__init__(**kwargs)
         self.http_conn_id = 'openapi.seoul.go.kr'
-        self.endpoint = '{{var.value.apikey_open_apiseoul_go_kr}}/json/' + dataset_nm + '/1/100'
+        self.endpoint = '{{var.value.apikey_openapi_seoul_go_kr}}/json/' + dataset_nm + '/1/100'
         self.base_dt_col = base_dt_col
         self.day_off = day_off
 
