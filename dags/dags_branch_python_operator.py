@@ -16,7 +16,7 @@ with DAG(
     def select_random():
         import random
 
-        item_list = ['A','B', 'C']
+        item_list = ['A','B','C']
         selected_item = random.choice(item_list)
         print('selected_item', selected_item)
         if selected_item == 'A':
