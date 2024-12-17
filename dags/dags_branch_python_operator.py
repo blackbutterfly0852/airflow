@@ -18,7 +18,7 @@ with DAG(
 
         item_list = ['A',' B', 'C']
         selected_item = random.choice(item_list)
-        
+        print('selected_item', selected_item)
         if selected_item == 'A':
             return 'task_a' # 실제 task_id 작성
         elif selected_item in ['B', 'C']:
