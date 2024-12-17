@@ -18,14 +18,17 @@ with DAG(
         from pprint import pprint
         today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
         connection = BaseHook.get_connection(http_conn_id)
-        url = f'{connection.host}:{connection.port}/{endpoint}/1/100/{today_ymd}'
+        url = f'{connection.host}:{connection.port}/{endpoint}/1/5/{today_ymd}/9'
         response = requests.get(url)
         
         contents = json.loads(response.text)
+        print('--contents--')
         pprint(contents)
         key_nm = list(contents.keys())[0]
+        print('--ket_nm--')
         pprint(key_nm)
         row_data = contents.get(key_nm).get('row')
+        print('--row_data--')
         pprint(row_data)
         last_dt = row_data[0].get(base_dt_col)
         last_date = last_dt[:10]
