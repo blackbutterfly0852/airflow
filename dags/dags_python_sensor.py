@@ -58,5 +58,6 @@ with DAG(
         mode = 'reschedule'
     )
     
+    sensor_task
 
 
