@@ -16,9 +16,9 @@ with DAG(
         import json
         from dateutil import relativedelta
         from pprint import pprint
-        today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
+        
         connection = BaseHook.get_connection(http_conn_id)
-        url = f'{connection.host}:{connection.port}/{endpoint}/1/5/{today_ymd}/9'
+        url = f'{connection.host}:{connection.port}/{endpoint}/1/100/'
         response = requests.get(url)
         
         contents = json.loads(response.text)
@@ -33,7 +33,7 @@ with DAG(
         last_dt = row_data[0].get(base_dt_col)
         last_date = last_dt[:10]
         last_date = last_date.replace('.','-').replace('/','-')
-
+        today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
         try:
             pendulum.from_format(last_date, 'YYYY-MM-DD')
         except:
@@ -52,8 +52,8 @@ with DAG(
         python_callable=check_api_update,
         op_kwargs = {
             'http_conn_id' : 'openapi.seoul.go.kr',
-            'endpoint' : '{{var.value.apikey_openapi_seoul_go_kr}}/json/CardSubwayStatsNew', # 서울시 지하철호선별 역별 승하차 인원 정보
-            'base_dt_col' : 'USE_YMD'
+            'endpoint' : '{{var.value.apikey_openapi_seoul_go_kr}}/json/SPOP_LOCAL_RESD_DONG', # 행정동 단위 서울 생활인구(내국인)
+            'base_dt_col' : 'STDR_DE_ID'
         },
         poke_interval = 600, # 10분
         mode = 'reschedule'
