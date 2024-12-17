@@ -29,7 +29,6 @@ with DAG(
         python_callable = select_random
     )
 
-   
 
     def common_func(**kwargs):
         print(kwargs['selected'])
