@@ -35,7 +35,7 @@ with DAG(
         last_date = last_date.replace('.','-').replace('/','-')
         today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
         try:
-            pendulum.from_format(last_date, 'YYYY-MM-DD')
+            last_date = pendulum.from_format(last_date, 'YYYY-MM-DD')
         except:
             from airflow.exceptions import AirflowException
             AirflowException(f'{base_dt_col} 컬럼은 YYYY.MM.DD 또는 YYYY/MM/DD 형태가 아닙니다.')
