@@ -33,6 +33,7 @@ with DAG(
         last_dt = row_data[0].get(base_dt_col)
         last_date = last_dt[:10]
         last_date = last_date.replace('.','-').replace('/','-')
+        print('last_date : ', last_date)
         today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
         try:
             last_date = pendulum.from_format(last_date, 'YYYY-MM-DD')
