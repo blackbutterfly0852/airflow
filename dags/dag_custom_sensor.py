@@ -1,4 +1,4 @@
-from sensors.seoul_api_date_sensor import SeoulApiDateSensor
+from sensors.seoul_api_data_sensor import SeoulApiDataSensor
 from airflow import DAG
 import pendulum
 
@@ -9,7 +9,7 @@ with DAG(
     catchup=False
 ) as dag:
     
-    tb_public_wifi_info = SeoulApiDateSensor(
+    tb_public_wifi_info = SeoulApiDataSensor(
         task_id='tb_public_wifi_info',
         dataset_nm='TbPublicWifiInfo',
         base_dt_col='WORK_DTTM',
@@ -18,7 +18,7 @@ with DAG(
         mode='reschedule'
     )
     
-    tb_public_wifi_info = SeoulApiDateSensor(
+    tb_public_wifi_info = SeoulApiDataSensor(
         task_id='tb_public_wifi_info',
         dataset_nm='TbPublicWifiInfo',
         base_dt_col='WORK_DTTM',
