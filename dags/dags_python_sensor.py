@@ -32,9 +32,9 @@ with DAG(
         pprint(row_data)
         last_dt = row_data[0].get(base_dt_col)
         last_date = last_dt[:10]
-        last_date = pendulum.from_format(last_date, 'YYYYMMDD')
+        last_date = pendulum.from_format(last_date, 'YYYYMMDD') # 일자형식으로 변경
         #last_date = last_date.replace('.','-').replace('/','-')
-        last_date = last_date.strftime('%Y-%m-%d')
+        last_date = last_date.strftime('%Y-%m-%d') # 특정형식으로 변경
         print('last_date_1 : ', last_date)
         today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
         '''
