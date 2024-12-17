@@ -50,8 +50,8 @@ with DAG(
         task_id = 'sensor_task',
         op_kwargs = {
             'http_conn_id' : 'openapi.seoul.go.kr',
-            'endpoint' : '{{var.value.apikey_seoul_go_kr}}/json/TbCorona19CountStatus',
-            'base_dt_col' : 'S_DT'
+            'endpoint' : '{{var.value.apikey_seoul_go_kr}}/json/CardSubwayStatsNew', # 서울시 지하철호선별 역별 승하차 인원 정보
+            'base_dt_col' : 'USE_YMD'
         },
         poke_interval = 600, # 10분
         mode = 'reschedule'

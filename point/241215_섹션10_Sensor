@@ -37,5 +37,7 @@
 나. extras = {"path" : "/opt/airflow/files"}
 
 [241217(화) 10-4.Python 센서]
+0. dags_python_sensor.py
 1. Python_operator랑 비슷
 가. 파라미터 중 딕셔너리 형태로 파이썬 함수에 전달할 때 templates_dict 보다는 op_kwargs를 더 많이 사용
+2. sensor는 범용적으로 사용할 수 있도록 작성
