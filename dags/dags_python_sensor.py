@@ -32,6 +32,7 @@ with DAG(
         pprint(row_data)
         last_dt = row_data[0].get(base_dt_col)
         last_date = last_dt[:10]
+        last_date = pendulum.from_format(last_date, 'YYYYMMDD')
         #last_date = last_date.replace('.','-').replace('/','-')
         last_date = last_date.strftime('%Y-%m-%d')
         print('last_date : ', last_date)
