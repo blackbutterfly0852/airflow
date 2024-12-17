@@ -43,7 +43,12 @@
 2. sensor는 범용적으로 사용할 수 있도록 작성
 
 [241217(화) 10-5.ExternalTask센서]
+0. dags_external_task_sensor.py
 1. ExternalTask parameter
 가. 중요 파라미터 : external_dag_id, execution_delta
 나. execution_date_fn : sensor_task와 해당 Dag의 실행주기가 다를 경우, 주기를 구하는 function을 대입
+
+[241217(화) 10-6.Custom센서 만들기]
+0. seoul_api_date_sensor.py, 
+1. 재활용성이 높아 다른 DAG에서 활용될 가능성이 높다면 가급적이면 Custom 오퍼레이션화(협업환경에서 코드중복방지 및 로직의 일원화)
 
