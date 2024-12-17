@@ -15,7 +15,7 @@ with DAG(
         import requests
         import json
         from dateutil import relativedelta
-        import pprint
+        from pprint import pprint
 
         connection = BaseHook.get_connection(http_conn_id)
         url = f'{connection.host}:{connection.port}/{endpoint}/1/100'
