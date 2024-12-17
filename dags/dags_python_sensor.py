@@ -51,7 +51,7 @@ with DAG(
         python_callable=check_api_update,
         op_kwargs = {
             'http_conn_id' : 'openapi.seoul.go.kr',
-            'endpoint' : '{{var.value.apikey_seoul_go_kr}}/json/CardSubwayStatsNew', # 서울시 지하철호선별 역별 승하차 인원 정보
+            'endpoint' : '{{var.value.apikey_openapi_seoul_go_kr}}/json/CardSubwayStatsNew', # 서울시 지하철호선별 역별 승하차 인원 정보
             'base_dt_col' : 'USE_YMD'
         },
         poke_interval = 600, # 10분
