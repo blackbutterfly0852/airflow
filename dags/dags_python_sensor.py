@@ -16,9 +16,9 @@ with DAG(
         import json
         from dateutil import relativedelta
         from pprint import pprint
-
+        today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
         connection = BaseHook.get_connection(http_conn_id)
-        url = f'{connection.host}:{connection.port}/{endpoint}/1/100'
+        url = f'{connection.host}:{connection.port}/{endpoint}/1/100/{today_ymd}'
         response = requests.get(url)
         
         contents = json.loads(response.text)
@@ -37,8 +37,6 @@ with DAG(
             from airflow.exceptions import AirflowException
             AirflowException(f'{base_dt_col} 컬럼은 YYYY.MM.DD 또는 YYYY/MM/DD 형태가 아닙니다.')
         
-        today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
-
         if last_date >= today_ymd:
             print(f'생성 확인(배치 날짜: {today_ymd} / API Last 날짜: {last_date})')
             return True
