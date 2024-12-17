@@ -35,14 +35,16 @@ with DAG(
         last_date = pendulum.from_format(last_date, 'YYYYMMDD')
         #last_date = last_date.replace('.','-').replace('/','-')
         last_date = last_date.strftime('%Y-%m-%d')
-        print('last_date : ', last_date)
+        print('last_date_1 : ', last_date)
         today_ymd = kwargs.get('data_interval_end').in_timezone('Asia/Seoul').strftime('%Y-%m-%d')
+        '''
         try:
             last_date = pendulum.from_format(last_date, 'YYYY-MM-DD')
         except:
             from airflow.exceptions import AirflowException
             AirflowException(f'{base_dt_col} 컬럼은 YYYY.MM.DD 또는 YYYY/MM/DD 형태가 아닙니다.')
-        print(last_date)
+        '''
+        print('last_date_2 : ', last_date)
         print(today_ymd)
         if last_date >= today_ymd:
             print(f'생성 확인(배치 날짜: {today_ymd} / API Last 날짜: {last_date})')
