@@ -17,7 +17,7 @@ class SeoulApiDataSensor(BaseSensorOperator):
         from dateutil.relativedelta import relativedelta
 
         connection = BaseHook.get_connection(self.http_conn_id)
-        url = f'{connection.host}/{connection.port}/{self.endpoint}'
+        url = f'{connection.host}:{connection.port}/{self.endpoint}'
         self.log.info(f'request url : {url}')
         response = requests.get(url)
 
