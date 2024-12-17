@@ -9,8 +9,8 @@ with DAG(
     catchup=False
 ) as dag:
     
-    tb_public_wifi_info = SeoulApiDataSensor(
-        task_id='tb_public_wifi_info',
+    tb_public_wifi_info_1 = SeoulApiDataSensor(
+        task_id='tb_public_wifi_info_1',
         dataset_nm='TbPublicWifiInfo',
         base_dt_col='WORK_DTTM',
         day_off=0,
@@ -18,8 +18,8 @@ with DAG(
         mode='reschedule'
     )
     
-    tb_public_wifi_info = SeoulApiDataSensor(
-        task_id='tb_public_wifi_info',
+    tb_public_wifi_info_2 = SeoulApiDataSensor(
+        task_id='tb_public_wifi_info_2',
         dataset_nm='TbPublicWifiInfo',
         base_dt_col='WORK_DTTM',
         day_off=-1,
