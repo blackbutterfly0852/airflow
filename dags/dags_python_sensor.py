@@ -48,6 +48,7 @@ with DAG(
 
     sensor_task = PythonSensor(
         task_id = 'sensor_task',
+        python_callable=check_api_update,
         op_kwargs = {
             'http_conn_id' : 'openapi.seoul.go.kr',
             'endpoint' : '{{var.value.apikey_seoul_go_kr}}/json/CardSubwayStatsNew', # 서울시 지하철호선별 역별 승하차 인원 정보
