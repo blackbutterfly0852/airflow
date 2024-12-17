@@ -41,3 +41,9 @@
 1. Python_operator랑 비슷
 가. 파라미터 중 딕셔너리 형태로 파이썬 함수에 전달할 때 templates_dict 보다는 op_kwargs를 더 많이 사용
 2. sensor는 범용적으로 사용할 수 있도록 작성
+
+[241217(화) 10-5.ExternalTask센서]
+1. ExternalTask parameter
+가. 중요 파라미터 : external_dag_id, execution_delta
+나. execution_date_fn : sensor_task와 해당 Dag의 실행주기가 다를 경우, 주기를 구하는 function을 대입
+
