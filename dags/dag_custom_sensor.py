@@ -9,19 +9,19 @@ with DAG(
     catchup=False
 ) as dag:
     
-    tb_corona_19_count_status_sensor = SeoulApiDateSensor(
-        task_id='tb_corona_19_count_status_sensor',
-        dataset_nm='TbCorona19CountStatus',
-        base_dt_col='S_DT',
+    tb_public_wifi_info = SeoulApiDateSensor(
+        task_id='tb_public_wifi_info',
+        dataset_nm='TbPublicWifiInfo',
+        base_dt_col='WORK_DTTM',
         day_off=0,
         poke_interval=600,
         mode='reschedule'
     )
     
-    tv_corona19_vaccine_stat_new_sensor = SeoulApiDateSensor(
-        task_id='tv_corona19_vaccine_stat_new_sensor',
-        dataset_nm='tvCorona19VaccinestatNew',
-        base_dt_col='S_VC_DT',
+    tb_public_wifi_info = SeoulApiDateSensor(
+        task_id='tb_public_wifi_info',
+        dataset_nm='TbPublicWifiInfo',
+        base_dt_col='WORK_DTTM',
         day_off=-1,
         poke_interval=600,
         mode='reschedule'
