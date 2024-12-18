@@ -6,9 +6,9 @@ from airflow.utils.state import State
 
 with DAG(
     dag_id='dags_external_task_sensor',
-    start_date=pendulum.datetime(2024,12,18, tz='Asia/Seoul'),
+    start_date=pendulum.datetime(2024,12,15, tz='Asia/Seoul'),
     schedule='0 7 * * *',
-    catchup=False
+    catchup=True
 ) as dag:
     def calculate_execution_date(execution_date):
     # execution_date에서 6시간 전 시점 계산
