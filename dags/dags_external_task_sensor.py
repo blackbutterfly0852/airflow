@@ -42,12 +42,17 @@ with DAG(
     )
 
     '''
+    def calculate_execution_date(execution_date):
+    # execution_date에서 6시간 전 시점 계산
+        return execution_date - timedelta(hours=6)
+    
     external_task_sensor_a = ExternalTaskSensor(
         task_id='external_task_sensor_a',
         external_dag_id='dags_branch_python_operator',
         external_task_id='task_a',
         allowed_states=[State.SKIPPED],
-        execution_delta=timedelta(hours=6),
+        # execution_delta=timedelta(hours=6),
+        execution_date_fn=calculate_execution_date, 
         poke_interval=10        #10초
     )
 
@@ -56,7 +61,8 @@ with DAG(
         external_dag_id='dags_branch_python_operator',
         external_task_id='task_b',
         failed_states=[State.SKIPPED],
-        execution_delta=timedelta(hours=6),
+        # execution_delta=timedelta(hours=6),
+        execution_date_fn=calculate_execution_date, 
         poke_interval=10        #10초
     )
 
@@ -65,6 +71,7 @@ with DAG(
         external_dag_id='dags_branch_python_operator',
         external_task_id='task_c',
         allowed_states=[State.SUCCESS],
-        execution_delta=timedelta(hours=6),
+        # execution_delta=timedelta(hours=6),
+        execution_date_fn=calculate_execution_date, 
         poke_interval=10        #10초
     )
