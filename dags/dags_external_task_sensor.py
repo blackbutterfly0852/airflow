@@ -44,7 +44,10 @@ with DAG(
     '''
     def calculate_execution_date(execution_date):
     # execution_date에서 6시간 전 시점 계산
-        return execution_date - timedelta(hours=6)
+        print(f"Current execution_date_1: {execution_date}")
+        print(f"Current execution_date_2: {execution_date.in_timezone('Asia/Seoul')}")
+        print(f"Current execution_date_3: {execution_date.in_timezone('Asia/Seoul') - timedelta(hours=6)}")
+        return execution_date.in_timezone('Asia/Seoul') - timedelta(hours=6)
     
     external_task_sensor_a = ExternalTaskSensor(
         task_id='external_task_sensor_a',

@@ -17,7 +17,7 @@
 [05-2.Bash오퍼레이터with Template]
 [05-3.Airflow의 날짜개념] >> 다시 공부
 1. Airflow ETL 시간 사상 :  데이터 관점
-가. 배치수행일자 : {{ data_interval_end }}
+가. 배치수행일자 : {{ data_interval_end }} > 간격의 시작시점
 나. 이전배치수행일자 : {{ data_interval_start, ds, ts, logical_date }}
   1) 데이터 관점에서의 시작일자 이자 이전 배치 수행일자
 [05-4. 파이썬 오퍼레이터 with Template]
