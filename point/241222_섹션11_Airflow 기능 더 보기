@@ -1,2 +1,4 @@
 [241222(일) 11-1.Dataset 이용한 DAG 트리거]
-
+1. TriggerDagRun, ExternalTaskSensor의 경우 강한 결합 > 단점
+2. DB(큐) 내 Produce, Consume 개념으로 약한 결합 추천 > DB(큐) 구독
+3. Dag이 여러 개의 Dag을 구독하는 경우 모든 사전 Dag이 업데이트 하는 시점에 수행
