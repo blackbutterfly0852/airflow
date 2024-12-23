@@ -1,4 +1,24 @@
-[241222(일) 11-1.Dataset 이용한 DAG 트리거]
+[241223(월) 11-1.Dataset 이용한 DAG 트리거]
+0.
+가. dags_dataset_producer_1.py, dags_dataset_producer_2.py 
+나. dags_dataset_consumer_1.py, dags_dataset_consumer_2.py
+    
 1. TriggerDagRun, ExternalTaskSensor의 경우 강한 결합 > 단점
 2. DB(큐) 내 Produce, Consume 개념으로 약한 결합 추천 > DB(큐) 구독
 3. Dag이 여러 개의 Dag을 구독하는 경우 모든 사전 Dag이 업데이트 하는 시점에 수행
+
+
+[241223(월) 11-2.dag의 default_args 파라미터 이해]
+1. BaseOperator 클래스 생성자가 가지고 있는 파라미터는 default_args에 변수값으로 적용가능
+가. https://airflow.apache.org/docs/apache-airflow/stable/_modules/airflow/models/baseoperator.html#BaseOperator
+나. def __init__(...)
+다. (변수가 동일할 때) default_args에 전달된 파라미터 보다 task 내 명시적으로 선언된 파라미터가 우선순위 가짐
+
+2. Dag 파라미터 vs BaseOperator 파라미터
+가. 내가 공통으로 적용하려는 파라미터가 Dag 수준의 파라미터인지 BaseOperator 수준의 파라미터인지 확인
+나. 동일한 명칭의 파라미터라도 Dag 수준과 BaseOperator 수준(Task단위) 의 따라 의미가 달라질 수 있음
+다. 결국 공식문서를 계속 참고해야됨
+
+
+[241223(월) 11-3.task실패시 email 발송하기]
+1. email 파라미터 3-5
