@@ -19,6 +19,35 @@
 나. 동일한 명칭의 파라미터라도 Dag 수준과 BaseOperator 수준(Task단위) 의 따라 의미가 달라질 수 있음
 다. 결국 공식문서를 계속 참고해야됨
 
-
 [241223(월) 11-3.task실패시 email 발송하기]
+0. dags_email_on_failure.py
 1. email 파라미터 3-5
+
+[241224(화) 11-4.sla 로 task 수행현황 감시하고 email 발송하기]
+1. SLA MISS 발생 시 Fail 처리 X
+2. SLA 제약사항으로 현업에서는 잘 사용 X
+가. 각 Task의 SLA timeout 카운트 시작시간은 Dag의 시작시간
+나. Dag이 스케줄보다 늦게 시작한 만큼 SLA 시간은 소요됨
+다. 첫번째 스케줄에서는 MISS 기록 X, E-MAIL 전송 X > 두 번째 스케줄부터
+라. SLA miss 가 기록이 안될 수도 있음 > SLA를 사용할 경우 많은 테스트 필요
+3. Browse > SLA miss
+
+[241224(화) 11-5.timeout 설정하기]
+1. excution_timeout : Task 수준의 timeout, dagrun_timeout : Dag 수준의 timeout
+2. dagrun_timeout 실패 시 이메일 전송 불가 + on_failure_callback 활용 필요
+3. SLA 와 다르게 timeout 시 Fail 처리
+
+[241224(화) 11-6.Airflow CLI 사용하기]
+1. 장점
+가. 일괄 등록 ex) connections 일괄 등록
+나. 특수 기능 ex) backfill
+다. 자동화
+
+2. sudo docker exec -it 컨테이너ID bash
+가. exec_Date 파라미터 = data_interval_start 기준, 기본 UTC
+
+3. backfill
+가. 기간 내 수행했던 스케줄 상관없이 모두 재실행 
+나. backfill 되었던 Dag은 claer 불가 + reset-dagruns 옵션과 함께 다시 backfill로 수행해야됨
+
+4. claer : 수행되었던 스케줄만 재실행
