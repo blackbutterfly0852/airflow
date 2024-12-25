@@ -24,6 +24,7 @@
 1. email 파라미터 3-5
 
 [241224(화) 11-4.sla 로 task 수행현황 감시하고 email 발송하기]
+0. dags_sla_email_example.py
 1. SLA MISS 발생 시 Fail 처리 X
 2. SLA 제약사항으로 현업에서는 잘 사용 X
 가. 각 Task의 SLA timeout 카운트 시작시간은 Dag의 시작시간
@@ -46,8 +47,8 @@
 2. sudo docker exec -it 컨테이너ID bash
 가. exec_Date 파라미터 = data_interval_start 기준, 기본 UTC
 
-3. backfill
+3. backfill (교안 참고)
 가. 기간 내 수행했던 스케줄 상관없이 모두 재실행 
 나. backfill 되었던 Dag은 claer 불가 + reset-dagruns 옵션과 함께 다시 backfill로 수행해야됨
 
-4. claer : 수행되었던 스케줄만 재실행
+4. claer (교안 참고) : 수행되었던 스케줄만 재실행

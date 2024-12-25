@@ -18,5 +18,5 @@ with DAG(
 
         task_id = 'bash_task',
         outlets = [dataset_dags_dataset_producer_2], # BaseOperator 내 parameter, 해당 task가 종료되면, dataset_dags_dataset_producer_2 produce 함
-        bash_command= 'echo "producer_1 수행완료" '
+        bash_command= 'echo "producer_2 수행완료" '
     )

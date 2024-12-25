@@ -32,7 +32,7 @@ with DAG(
 
     bash_fail = BashOperator(
         task_id = 'bash_fail',
-        bash_command= = 'exit 1'
+        bash_command= 'exit 1'
 
     )
     bash_success = BashOperator(
