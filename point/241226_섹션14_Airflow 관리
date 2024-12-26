@@ -1,0 +1,14 @@
+[241226(목) 14-1.메타DB 주요테이블 보기]
+1. UI - Browse 
+가. DAG Runs : select * from public.dag_run;
+나. Audit Logs : select * from public.log; User별 모든 활동 기록
+다. Task instance : select * from task_instance
+라. Task Reschedule (+ sensor)
+2. UI - Admin
+가. Variables : select * from variable; # 복호화된 내용이 보이므로, 최소인원만 접근 가능하도록, 대량 정보 입력 필요시 DB에 직접 Insert 가능, 메타DB 매일 백업
+나. Configurations (+ Docker-compose.yaml, True)
+다. Connections : select * from connection ; # 복호화된 내용이 보이므로, 최소인원만 접근 가능하도록, 대량 정보 입력 필요시 DB에 직접 Insert 가능, 메타DB 매일 백업 
+라. Plugins : hive 등, 소스코드 내 Plugins와 다름 + 커스텀 가능(+ web 화면 변경)
+마. Providers : 없음
+바. Pools : select * from slot_pool; 
+3. Job 수행이력 삭제? dag_run (PK) > task_instance(FK) : dag_run에서 삭제시 task_instance에도 자동삭제
