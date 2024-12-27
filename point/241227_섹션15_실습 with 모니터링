@@ -1,0 +1,19 @@
+[241227(금) 15-1.Airflow DAG 수행현황 모니터링 쿼리 만들기]
+1. 필요테이블
+가. dag : dag master 테이블
+나. dag_run
+
+2. 쿼리 (모니터링 대상을 어제와 오늘 수행된 Task)
+가. next_dagrun_data_interval_start : 마지막으로 수행된 일자
+나. next_dagrun_data_interval_end between current_date - 1 and current_date: 다음 수행 일자 > 어제 수행, 오늘 수행 해야 되는데 미수행, 오늘 이미 수행된 것들
+
+[241227(금) 15-2.모니터링 결과 Slack 전송하기]
+
+[241227(금) 15-3.모니터링 결과 Email 전송하기]
+0. dags_daily_dag_monitoring_to_email.py
+1. 웹을 구성하는 요소
+가. HTML : Markup Language(문서나 데이터 구조를 정의하는 언어, 프로그래밍 언어 X)
+    1) web상 레이아웃 결정
+    2) element : Tag + Content
+나. CSS : 글자크기, 표 간격 등
+다. JavaScript : 행위, 버튼을 눌렀을 때 행위에 대한 내용을 결정
