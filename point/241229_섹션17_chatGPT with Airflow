@@ -16,6 +16,7 @@
 
 [241229(일) 17-4.chatGPT응답으로 블로그 자동 포스팅하기] - 티스토리 openapi 24.02 종료
 0. prkrx_api.py, chatgpt.py, tistory.py, tistory_write_post_by_chatgpt_operator.py, dags_tistory_post_with_chatgpt.py
+
 1. operator 내에서 pykrx 사용
 가. Dockerfile 내 pykrx 추가 및 이미지 재빌드(_v2)
 나. docker-compose.yaml 내 이미지 변경
