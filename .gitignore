@@ -3,3 +3,6 @@ venv
 lecture
 dags/__pycache__
 plugins/common/__pycache__
+plugins/config/get_kakao_token.py
+241229_openapi_test.ipynb
+241229_pykrx_test.ipynb

@@ -1,1 +1,29 @@
-[241226(목) 13-1.Slack 연동 준비]
+[241228(토) 13-1.Slack 연동 준비]
+0. plugins/config/on_failure_callback_to_slack.py, 
+1. 멤버 : 워크페이스 = 1 : 다, 워크스페이스 : 채널 = 1 : 다
+2. 우리가 전달할 메시지를 보여주기 위해서는 bot이 필요함
+가. slack_api
+나. create an app from scratch (간단하게 사용 용도)
+다. Incoming Webhooks가 필요함 : 네이버 메일 참고
+3. airflow.providers.slack.hooks
+가. airflow.providers.slack.hooks.slack : slack_api
+나. airflow.providers.slack.hooks.slack_webhook : webhook(간단하게 사용 용도)
+4. 메세지 전송시 block kit builder 활용
+5. on_failure_callback(context) : context는 미리 정의된 템플릿 변수들 사용 가능, task_id 등, airflow 공식문서 참고
+
+[241228(토) 13-2.카카오 연동 준비 ~ 13-3.카카오 API사용준비]
+1. 네이버 메일 참고
+
+[241228(토) 13-4.task 실패시 카카오 메시지 보내기, 13-5.task 실패시 카카오 메시지 보내기]
+1. slack에 비해 불편, 교안참고
+2. 텔레그램은 provider + hook 존재
+
+[241228(토) 13-5.SLA Miss시 Slack 메시지 보내기]
+1. sla_miss_callback parameter
+가. dag과 task_list 주로 사용
+나. blocking_task_list
+    1) 아직 수행도 못한 task 담김
+    2) 예시) task1-task2-task3 이 있을 경우 task3의 sla miss 시간이 길어 실패할 가능성이 적지만 task2가 실패하여 종료될 경우 task3이 기록
+다. blocking_tis : blocking_task_list의 인스턴스 객체가 담김
+2. (혼동주의) 비슷한 시간에 만료되는 SLA Miss 건들을 묶어서 sla_miss_callback 호출, 약 20초 내에 같이 발생하면 묶어서 발송 (경험)
+3. SLA는 엄격하게 관리되지 않음

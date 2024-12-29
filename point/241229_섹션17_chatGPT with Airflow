@@ -1,0 +1,22 @@
+[241229(일) 17-2.파이썬으로 chatGPT API호출하기]
+0. API 유료, 개인 20$하고 무관하고 별도 지불 필요
+1. 3가지 옵션
+가. system : assistant에게 어떻게 답변을 해야하는지 가이드 제공 (+assistant : 해당 role로 chatGPT가 답변)
+나. temperature : 0(사실, 뉴스/보고서 등) ~ 2(랜덤, 문학/시 등)
+다. n 설정 : 답변 개수 설정
+
+2. (가상환경) pip install openapi > pip install notebook > python -m notebook
+
+
+[241229(일) 17-3.파이썬으로 주식정보 가져오기]
+0. 
+가. https://github.com/sharebook-kr/pykrx/tree/master
+나. https://github.com/hjkim-sun/airflow/tree/master/plugins/config/pykrx_api.py내 참고
+1. (가상환경) pip install pykrx
+
+[241229(일) 17-4.chatGPT응답으로 블로그 자동 포스팅하기] - 티스토리 openapi 24.02 종료
+0. prkrx_api.py, chatgpt.py, tistory.py, tistory_write_post_by_chatgpt_operator.py, dags_tistory_post_with_chatgpt.py
+
+1. operator 내에서 pykrx 사용
+가. Dockerfile 내 pykrx 추가 및 이미지 재빌드(_v2)
+나. docker-compose.yaml 내 이미지 변경

@@ -1,0 +1,7 @@
+[241229(일) 16-1.Airflow 아키텍처와 Executor]
+1. 스케줄러(head)
+2. Executor : Task가 동작하는 환경과 메커니즘, Celery Executor, Kubernetes Executor가 가장 많이 사용
+3. 부하에 대한 확장
+가. scale up : cpu/memory
+나. scale out : 서버 늘림, Executor의 확장과 관련
+4. Kubernetes Executor : pod(다수의 컨테이너, 배포단위, pod을 이용해 task 실행)
