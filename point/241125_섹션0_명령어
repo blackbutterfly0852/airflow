@@ -6,7 +6,7 @@
 2. 도커 명령어 (blackbutterfly0852 / god1133!!)
 가. sudo service docker start
 나. docker-compose.yml 이 있는 폴더로 이동
-다. sudo docker compose up / down
+다. sudo docker compose up / down + sudo docker compose --profile flower up + sudo docker compose up flower (flower 컨테이너만 start)
 라. sudo docker ps
 마. sudo docker exec -it 195e5887e2a3 bash : 각 컨테이너로 접속
 

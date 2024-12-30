@@ -24,3 +24,52 @@
 3. postgres 및 redis는 수평적 확장을 할 경우 이중화(Active/StandBy, redis의 경우 sentinel 사용) 설정 필요
 4. Airflow 모듈을 컨테이너 즉, pod 형태 + celery Executor(큐 서비스를 사용) : 많이 사용하는 형태
 5. Airflow는 GCP하고 궁합이 좋음
+
+
+[241230(월) 16-3.Flower로 Celery 브로커 감시하기]
+1. flower 관련 명령어 참고
+2. flower의 celery worker가 정상적으로 task를 받아 처리했냐, 안했냐로 success/fail > 즉, airflow의 success/fail가 개념이 다름
+
+[241230(월) 16-4.Airflow 파라미터 셋팅]
+1. docker-compose.yaml을 통해 컨테이너 내부에 있는 airflow.cfg 파일 수정 (직접 수정하면 의미 없음, 컨테이너라 사라지기 때문)
+2. 성능에 중요한 Parameter 
+가. core
+    1) max_active_runs_per_dag : backfill과 관련, DAG당 동시 수행 가능한 Run의 최대 개수
+    2) max_active_tasks_per_dag : DAG당 모든 Run을 통틀어 동시 수행 가능한 Task의 최대 개수
+    3) parallelism : 스케줄러당 동시 수행 가능한 Task의 개수 ex) 스케줄러가 2개라면 x2
+
+나. scheduler : 대규모 환경일 때는 scheduler 부하로 골머리
+    1) dag_dir_list_interval : 작게 줄수록 스케줄러에 부담
+    2) min_file_process_interval : 작게 줄수록 스케줄러에 부담
+    3) file_parsing_sort_mode(scheduler 2개이상 부터 유효)
+        * scheduler가 2개라고 해서 scheduler의 역할 (parsing, DB기록, worker 지시)을 두 개로 나눠서 진행하는 것이 아니라, 각각 중복된 역할을 수행
+        * parsing 중복이 발생 > 정렬
+    4) parsing_processes : 서버 스펙에 따라 조절
+
+다. Celery, Webserver
+    1) worker_concurrency
+        * Celery worker 당 동시 수행 가능한 Task의 최대 개수
+        * celery worker가 몇 개 인지, 노드가 몇 개인지 고려하면서 작성 
+
+3. Celery Executor, 특히 클러스터를 구성해서 운영을 할 때에는 스케줄러 개수, 워커 개수를 잘 파악해서 parallelism, worker_concurrency 파라미터 작성 필요
+
+4. 적용 우선순위 확인 : Airflow config > DAG > Operator
+
+[241230(월) 16-5.스케줄러 부하 줄이기]
+1. scheduler가 여러 개 있다고 해야할 일을 나눠서 하는 것이 아니라 독립적으로 수행 > 여러 개 띄울 시 부하? (여기서 부하는 scheduler 자체의 부하?)
+가. 부하를 어느정도 줄이기 위해 scheduler loop 활용 : scheduler가 잡고 있는 Dag, Task는 DB에서 Lock을 걸어 놓음
+나. 다른 스케줄러가 DB에서 해당 Dag 혹은 Task가 Lock된 상황을 보고 넘어감 > 어느 정도 부하 경감
+
+2. 스케줄러 자체의 부하를 줄이는 법 - parsing 단계
+가. import json > 있는지 import 한다.
+나. custom_operator 생성자 경량화 : DB 연결 부분은 execute 부분 작성 추천
+다. Variable 값 추출 시 operator 내부에서 Template 활용 > Variable.get(""); 메타DB도 연결
+라. airflow.cfg 중 파라미터 조절
+마. SSD
+
+3. 스케줄러 자체의 부하를 줄이는 법 - 실행단계
+가. DB Proxy : PGBouncer (connection pool)
+나. 파라미터 조절
+    1) scheduler loop : 스케줄러가 DagRun을 생성하고 Task Instance을 만들어서 큐에다 넣어주는 과정 반복
+    2) max_dagruns_per_loop_to_schedule : DAG RUN의 개수
+    3) max_dagruns_to_create_per_loop : DAG의 개수
