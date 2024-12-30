@@ -4,4 +4,17 @@
 3. 부하에 대한 확장
 가. scale up : cpu/memory
 나. scale out : 서버 늘림, Executor의 확장과 관련
-4. Kubernetes Executor : pod(다수의 컨테이너, 배포단위, pod을 이용해 task 실행)
+4. Celery Executor 
+가. 교안 그림 참고
+나. 과정은 복잡해 보이지만 '비'동기 > 스케줄러(Executor)가 워커에 지시하고 추가 작업 가능
+다. 스케줄러와 워커는 물리적으로 다른 서버에 존재해도 되며, 수평적 확장시 DAG/메타DB/큐만 잘 바라보고 있으면 됨
+4. Kubernetes Executor 
+가. 교안 참고
+    1) plane(머리), worker(손,발)
+    2) pod(한 개이상의 컨테이너로 구성) 단위 배포, task 실행
+    3) etcd (메타DB)
+    4) scheduler(!= airflow scheduler) : 어느 노드에 pod 배포할지 결정
+    5) cntr-manager : 클러스터 관리
+    6) kublet : 헬스체크
+나. 결국 Celery와 마찬가지로, Airflow 스케줄러와 pod(task 실행주체)는 직접적으로 통신하지 않고, API server를 통해 통신 > 수평적 확장 가능  
+
