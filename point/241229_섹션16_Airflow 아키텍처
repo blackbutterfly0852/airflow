@@ -1,4 +1,4 @@
-[241229(일) 16-1.Airflow 아키텍처와 Executor]
+[241230(월) 16-1.Airflow 아키텍처와 Executor]
 1. 스케줄러(head)
 2. Executor : Task가 동작하는 환경과 메커니즘, Celery Executor, Kubernetes Executor가 가장 많이 사용
 3. 부하에 대한 확장
@@ -18,3 +18,9 @@
     6) kublet : 헬스체크
 나. 결국 Celery와 마찬가지로, Airflow 스케줄러와 pod(task 실행주체)는 직접적으로 통신하지 않고, API server를 통해 통신 > 수평적 확장 가능  
 
+[241230(월) 16-2.Celery 환경 구성 방법]
+1. scheduler 혹은 worker가 동일한 airflow.cfg(환경변수 설정파일)을 가지고, 동일한 Dag(NAS 마운트) 서로 다른 물리적 서버에 올려도됨
+2. scheduler는 수평적 확장은 한다고 해도 부하가 줄어들지 않음
+3. postgres 및 redis는 수평적 확장을 할 경우 이중화(Active/StandBy, redis의 경우 sentinel 사용) 설정 필요
+4. Airflow 모듈을 컨테이너 즉, pod 형태 + celery Executor(큐 서비스를 사용) : 많이 사용하는 형태
+5. Airflow는 GCP하고 궁합이 좋음
